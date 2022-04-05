@@ -1,30 +1,26 @@
 package mso.javaoo;
 
 public class Conta {
-  public String numeroDaConta;
-  public String nomeTitular;
-  public double saldo;
-
-  // ... outros atributos ...
-
-  // this é uma referência à variável fora do método, ele aponta para a instância
-//  void sacar(double quantidade) {
-//    double novoSaldo = this.saldo - quantidade;
-//    this.saldo = novoSaldo;
-//  }
-
-  void depositar(double quantidade) {
-    this.saldo += quantidade;
-  }
-
-  // ... mais métodos
+  private String numeroDaConta;
+  private String nomeTitular;
+  private double saldo;
 
   boolean sacar(double valor) {
-    if (this.saldo < valor) {
-      return false;
-    } else {
-      this.saldo = this.saldo - valor;
-      return true;
-    }
+    this.saldo = this.saldo - valor;
+    return true;
   }
+
+  boolean depositar(double quantidade) {
+    this.saldo += quantidade;
+    return true;
+  }
+
+  boolean transferir(Conta destino, double valorTransferencia) {
+    boolean retirou = this.sacar(valorTransferencia);
+//    return (!retirou) ? false : destino.depositar(valorTransferencia);
+    return retirou && destino.depositar(valorTransferencia);
+  }
+
+  // Encapsulamento: ocultar todos os membros de uma classe (atributos)
+  // além de esconder como funcionam os métodos
 }
