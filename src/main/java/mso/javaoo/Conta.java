@@ -1,9 +1,20 @@
 package mso.javaoo;
 
 public class Conta {
-  private String numeroDaConta;
-  private String nomeTitular;
+  String numeroDaConta;
+  String nomeTitular;
   private double saldo;
+  private static int totalDeContas;
+
+  // Construtor
+  Conta() {
+    System.out.println("Criando minha conta");
+    Conta.totalDeContas = Conta.totalDeContas + 1;
+  }
+
+  public static int getTotalDeContas() {
+    return Conta.totalDeContas;
+  }
 
   boolean sacar(double valor) {
     this.saldo = this.saldo - valor;
@@ -15,12 +26,12 @@ public class Conta {
     return true;
   }
 
-  boolean transferir(Conta destino, double valorTransferencia) {
-    boolean retirou = this.sacar(valorTransferencia);
-//    return (!retirou) ? false : destino.depositar(valorTransferencia);
-    return retirou && destino.depositar(valorTransferencia);
+  public double getSaldo() {
+    return this.saldo;
   }
 
-  // Encapsulamento: ocultar todos os membros de uma classe (atributos)
-  // além de esconder como funcionam os métodos
+  public void setSaldo(double saldo) {
+    this.saldo = saldo;
+  }
+
 }

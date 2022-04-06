@@ -4,7 +4,13 @@ public class Programa {
   public static void main(String[] args) {
     Conta minhaConta = new Conta();
 
-//    minhaConta.saldo = 1000;
-    minhaConta.sacar(50000);
+    System.out.println(minhaConta);
+
+    int total = Conta.getTotalDeContas();
+    System.out.println(total);
+
+//    minhaConta.depositar(2000);
+//    System.out.println("Saldo: " + minhaConta.getSaldo());
+
   }
 }
